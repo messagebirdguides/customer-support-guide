@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Customer Support Admin</title>
+        <style type="text/css">
+            body {
+                font-family:sans-serif;
+            }
+            table {
+                border:solid 1px #aaa;
+                width:100%;
+            }
+            td,th {
+                padding:10px;
+                border:solid 1px #555;
+            }
+            input[type=submit] {
+                border:solid 1px #555;
+                background-color:#ddd;
+                font-size:1em;
+            }
+        </style>
+        <script type="application/javascript">
+            setTimeout(function() {
+                document.location.reload(true);
+            }, 10000);
+        </script>
+    </head>
+    <body>
+        <h1 style="text-align:center;">Customer Support Admin</h1>
+        
+        <table>            
+            <tr>
+                <th>Ticket ID</th>
+                <th>Customer Phone</th>
+                <th>Messages</th>
+            </tr>
+            {{#each tickets}}
+            <tr>
+                <td>{{this.shortId}}</td>
+                <td>{{this.number}}</td>
+                <td>
+                    <ul>
+                    {{#each this.messages}}
+                    <li><strong>{{this.direction}}:</strong> {{this.content}}</li>
+                    {{/each}}
+                    </ul>
+                    <form action="/reply" method="post">
+                        <input type="text" name="content" placeholder="Write a reply ..." />
+                        <input type="hidden" name="id" value="{{this._id}}" />
+                        <input type="submit" value="send" />
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        </table>
+        
+        <p style="text-align:center;">A sample application brought to you by <a href="https://developers.messagebird.com/">MessageBird</a> :)</p>
+    </body>
+</html>
