@@ -1,19 +1,25 @@
-# SMS Customer Support
+# SMS Customer Support 
+### ⏱ 30 min build time
 
-People love communicating with each other through short text messaging on their phones and getting quick replies. Hence, as customers, they want the same easy way of contact when they need support from a business.  Companies, on the other side, need to organize communication with their customers and often resort to ticket systems to combine all messages for specific cases in a shared view for support agents.
+## Why build SMS customer support? 
 
-In this guide, we'll demonstrate a simple customer support system for SMS-based communication between consumers and companies, built in NodeJS.
+People love communicating in real time, regardless of whether its their friends or to a business. Real time support in a comfortable medium can create an excellent support experience that can help retain users for life. 
+
+On the business side, Support teams need to organize communication with their customers, often using ticket systems to combine all messages for specific cases in a shared view for support agents.
+
+In this MessageBird Developer Guide, we'll show you how to build a simple customer support system for SMS-based communication between consumers and companies, built in NodeJS.
 
 Our sample application has the following features:
+
 - Customers can send any message to a virtual mobile number (VMN) created and published by the company. Their message becomes a support ticket, and they receive an automated confirmation with a ticket ID for their reference.
 - Any subsequent message from the same number is added to the same support ticket. There's no additional confirmation.
 - Support agents can view all messages in a web view and reply to them.
 
 ## Getting Started
 
-Our sample application uses NodeJS and [Express](https://expressjs.com/). Thus you need to have Node and npm installed on your computer to run it. You can [install them from npmjs.com](https://www.npmjs.com/get-npm).
+Our sample application uses NodeJS and [Express](https://expressjs.com/), so let's install Node and npm on your computer. You can install them from [npmjs.com](https://www.npmjs.com/get-npm) for free.
 
-We've provided the source code [in a GitHub repository](https://github.com/messagebirdguides/customer-support-guide), so you can either clone the sample application with git or download a ZIP file with the code to your computer.
+We've provided the source code in the [MessageBird Developer Guides GitHub repository](https://github.com/messagebirdguides/customer-support-guide), so you can either clone the sample application with git or download a ZIP file with the code to your computer.
 
 To install Express, the [MessageBird SDK for NodeJS](https://www.npmjs.com/package/messagebird) and other dependencies, open a console pointed at the directory into which you've put the sample application and run the following command:
 
@@ -62,10 +68,10 @@ Awesome, you have set up your first virtual mobile number! Check out the [Number
 
 So you have a number now, but MessageBird has no idea what to do with it. That's why you need to define a _Flow_ next that ties your number to your webhook. Here is one way to achieve that:
 
-1. Go to the [Flow Builder](https://dashboard.messagebird.com/en/flow-builder) section of your MessageBird account. Under _Create a New Flow_, you'll see a list of templates. Find the one named "SMS to HTTP" and click "Use this flow".
+1. Go to the [Flow Builder](https://dashboard.messagebird.com/en/flow-builder) section of your MessageBird account. Under _Create a New Flow_, you'll see a list of templates. Find the one named "SMS to HTTP" and click "Use this flow". ![Create Flow, Step 1](create-flow-1.png)
 2. Give your flow a name, such as "Support Receiver".
-3. The flow contains two steps. On the first step, the trigger "Incoming SMS", tick the box next to your number and **Save**.
-4. Click on the second step, "Forward to URL". Choose _POST_ as the method, copy the output from the `lt` command in the previous step and add `/webhook` to the end of it - this is the name of the route we use to handle incoming messages. Click **Save**.
+3. The flow contains two steps. On the first step, the trigger "Incoming SMS", tick the box next to your number and **Save**. ![Create Flow, Step 2](create-flow-2.png)
+4. Click on the second step, "Forward to URL". Choose _POST_ as the method, copy the output from the `lt` command in the previous step and add `/webhook` to the end of it - this is the name of the route we use to handle incoming messages. Click **Save**. ![Create Flow, Step 3](create-flow-3.png)
 5. Click **Publish Changes** to activate your flow.
 
 ## Configuring the MessageBird SDK
@@ -218,4 +224,12 @@ node index.js
 
 Open http://localhost:8080/admin in your browser. You should see an empty list of tickets. Then, take out your phone, launch the SMS app and send a message to your virtual mobile number. Around 10-20 seconds later, you should see your message in the browser! Amazing! Try again with another message which will be added to the ticket, or send a reply.
 
-Congratulations, you just learned how to handle inbound messages with MessageBird and how to use them as a support system!
+## Nice work!
+
+You now have a running SMS Customer Support application!
+
+You can now use the flow, code snippets and UI examples from this tutorial as an inspiration to build your own SMS Customer Supoport system. Don't forget to download the code from the [MessageBird Developer Guides GitHub repository](https://github.com/messagebirdguides/customer-support-guide).
+
+## Next steps
+
+Want to build something similar but not quite sure how to get started? Please feel free to let us know at support@messagebird.com, we'd love to help!
